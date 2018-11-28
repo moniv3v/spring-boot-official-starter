@@ -20,7 +20,7 @@ public class UserController {
     @PostMapping(produces = {"application/json"})
     public ResponseEntity<String> addUsers(@RequestBody User user) {
         int targetID = userService.addUser(user);
-        URI location = URI.create("users/"+user.getUserId());
+        URI location = URI.create("/users/"+user.getUserId());
         HttpHeaders responseHeaders = new HttpHeaders();
         responseHeaders.setLocation(location);
         return ResponseEntity.created(location).build();

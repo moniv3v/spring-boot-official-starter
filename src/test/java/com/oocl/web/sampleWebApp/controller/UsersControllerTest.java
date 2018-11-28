@@ -33,7 +33,8 @@ public class UsersControllerTest {
 
     @Test
     public void shouldReturnDefaultLocation() throws Exception {
-        this.mockMvc.perform(post("/users")).andDo(print()).andExpect(status().isCreated())
+        String userJson = "{\"username\":\"ABC\"}";
+        this.mockMvc.perform(post("/users").contentType("application/json").content(userJson)).andDo(print()).andExpect(status().isCreated())
                 .andExpect(header().string("location", "/users/1"));
     }
 
